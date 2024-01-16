@@ -152,9 +152,9 @@ variable "wso2_us_vpn_outbound_ip" {
 }
 
 variable "front_door_waf_object" {
-  type = map(any)
+  type        = map(any)
   description = "WAF policy configuration"
-  default = {}
+  default     = {}
 }
 
 variable "private_link_scope_workload_name" {
