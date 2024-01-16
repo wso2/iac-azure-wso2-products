@@ -96,8 +96,8 @@ variable "firewall_private_ip" {
   type        = string
 }
 
-variable "vmss_workload_subnet_address_prefix" {
-  description = "The subnet CIDR of VMSS"
+variable "workload_subnet_address_prefix" {
+  description = "The subnet CIDR of workload subnet"
   type        = string
 }
 

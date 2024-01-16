@@ -244,7 +244,7 @@ module "firewall-allow-application-rule" {
   application_rules = {
     "AllowSpringbootSchema" = {
       name             = "AllowSpringbootSchema"
-      source_addresses = [var.virtual_network_address_space]
+      source_addresses = [var.workload_subnet_address_prefix]
       target_fqdns     = ["www.springframework.org"]
       protocol = {
         port = "80"
@@ -253,7 +253,7 @@ module "firewall-allow-application-rule" {
     }
     "AllowNodeKernelUpdates" = {
       name             = "AllowNodeKernelUpdates"
-      source_addresses = [var.vmss_workload_subnet_address_prefix]
+      source_addresses = [var.workload_subnet_address_prefix]
       target_fqdns     = ["azure.archive.ubuntu.com", "security.ubuntu.com"]
       protocol = {
         port = "80"
@@ -437,80 +437,6 @@ module "deve-key-vault-private-endpoint" {
     module.spoke-resource-group,
     module.deve-key-vault,
     module.private-dns-zone-vnet-link-key-vault
-  ]
-}
-
-# Create DevOPS SP for admin deve key vault
-module "admin-deve-key-vault-dev-ops-ad-application" {
-  source           = "git::https://github.com/wso2/azure-terraform-modules.git//modules/azuread/Application?ref=v0.5.0"
-  application_name = join("-", [var.project, var.environment, var.admin_deve_kv_dev_ops_ad_application_name])
-}
-
-module "admin-deve-key-vault-dev-ops-ad-sp" {
-  source            = "git::https://github.com/wso2/azure-terraform-modules.git//modules/azuread/Service-Principal?ref=v0.5.0"
-  ad_application_id = module.admin-deve-key-vault-dev-ops-ad-application.application_id
-  depends_on = [
-    module.admin-deve-key-vault-dev-ops-ad-application
-  ]
-}
-
-module "admin-key-vault-dev-ops-ad-sp-rbac" {
-  source               = "git::https://github.com/wso2/azure-terraform-modules.git//modules/azurerm/Role-Assignment?ref=v0.5.0"
-  principal_id         = module.admin-deve-key-vault-dev-ops-ad-sp.sp_internal_id
-  resource_id          = module.admin-key-vault.vault_id
-  role_definition_name = local.role_definition_name_reader
-  depends_on = [
-    module.admin-deve-key-vault-dev-ops-ad-sp,
-    module.admin-key-vault
-  ]
-}
-
-module "deve-key-vault-dev-ops-ad-sp-rbac" {
-  source               = "git::https://github.com/wso2/azure-terraform-modules.git//modules/azurerm/Role-Assignment?ref=v0.5.0"
-  principal_id         = module.admin-deve-key-vault-dev-ops-ad-sp.sp_internal_id
-  resource_id          = module.deve-key-vault.vault_id
-  role_definition_name = local.role_definition_name_reader
-  depends_on = [
-    module.admin-deve-key-vault-dev-ops-ad-sp,
-    module.deve-key-vault
-  ]
-}
-
-module "admin-deve-key-vault-dev-ops-sp-password" {
-  source         = "git::https://github.com/wso2/azure-terraform-modules.git//modules/azuread/Service-Principal-Password?ref=v0.5.0"
-  sp_internal_id = module.admin-deve-key-vault-dev-ops-ad-sp.sp_internal_id
-  depends_on = [
-    module.admin-deve-key-vault-dev-ops-ad-sp
-  ]
-}
-
-# create access policies for key vaults
-module "admin-key-vault-dev-ops-ad-sp-access-policy" {
-  source                               = "git::https://github.com/wso2/azure-terraform-modules.git//modules/azurerm/Key-Vault-Access-Policy?ref=v0.5.0"
-  vault_access_object_id               = module.admin-deve-key-vault-dev-ops-ad-sp.sp_object_id
-  vault_access_tenant_id               = var.tenant_id
-  key_vault_id                         = module.admin-key-vault.vault_id
-  vault_access_key_permissions         = var.key_vault_dev_ops_ad_sp_access_key_permissions
-  vault_access_secret_permissions      = var.key_vault_dev_ops_ad_sp_access_secret_permissions
-  vault_access_certificate_permissions = var.key_vault_dev_ops_ad_sp_access_certificate_permissions
-  depends_on = [
-    module.admin-key-vault,
-    module.admin-deve-key-vault-dev-ops-ad-sp
-  ]
-}
-
-# create access policies for key vaults
-module "deve-key-vault-dev-ops-ad-sp-access-policy" {
-  source                               = "git::https://github.com/wso2/azure-terraform-modules.git//modules/azurerm/Key-Vault-Access-Policy?ref=v0.5.0"
-  vault_access_object_id               = module.admin-deve-key-vault-dev-ops-ad-sp.sp_object_id
-  vault_access_tenant_id               = var.tenant_id
-  key_vault_id                         = module.deve-key-vault.vault_id
-  vault_access_key_permissions         = var.key_vault_dev_ops_ad_sp_access_key_permissions
-  vault_access_secret_permissions      = var.key_vault_dev_ops_ad_sp_access_secret_permissions
-  vault_access_certificate_permissions = var.key_vault_dev_ops_ad_sp_access_certificate_permissions
-  depends_on = [
-    module.deve-key-vault,
-    module.admin-deve-key-vault-dev-ops-ad-sp
   ]
 }
 
