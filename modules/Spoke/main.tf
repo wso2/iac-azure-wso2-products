@@ -312,10 +312,7 @@ module "bastion" {
   firewall_private_ip                                           = var.firewall_private_ip
   private_endpoint_subnet_id                                    = module.private-endpoint-subnet.private_endpoint_subnet_id
   private_dns_zone_ids                                          = [local.private_dns_zone_id_blob]
-  storage_account_network_rules_ip_rules                        = [
-    var.wso2_us_vpn_outbound_ip,
-    var.wso2_lk_office_outbound_ip
-  ]
+  storage_account_network_rules_ip_rules                        = var.private_network_allow_ip_list
   bastion_subnet_enforce_private_link_endpoint_network_policies = var.bastion_subnet_enforce_private_link_endpoint_network_policies
   depends_on = [
     module.spoke-resource-group,
@@ -369,18 +366,15 @@ module "bastion-nic-rbac-bastion-user-ad-group-reader" {
 
 # Create Admin key vault
 module "admin-key-vault" {
-  source                     = "git::https://github.com/wso2/azure-terraform-modules.git//modules/azurerm/Key-Vault?ref=v0.5.0"
-  key_vault_name             = join("-", [var.shortened_project, var.admin_key_vault_application_name, var.shortened_environment, var.shortened_location, var.shortened_padding])
-  tags                       = local.default_tags
-  location                   = var.location
-  resource_group_name        = module.spoke-resource-group.resource_group_name
-  sku_name                   = var.admin_key_vault_sku_name
-  vault_access_tenant_id     = var.tenant_id
-  soft_delete_retention_days = var.admin_key_vault_soft_delete_retention_days
-  network_acls_ip_rules = [
-    var.wso2_us_vpn_outbound_ip,
-    var.wso2_lk_office_outbound_ip
-  ]
+  source                      = "git::https://github.com/wso2/azure-terraform-modules.git//modules/azurerm/Key-Vault?ref=v0.5.0"
+  key_vault_name              = join("-", [var.shortened_project, var.admin_key_vault_application_name, var.shortened_environment, var.shortened_location, var.shortened_padding])
+  tags                        = local.default_tags
+  location                    = var.location
+  resource_group_name         = module.spoke-resource-group.resource_group_name
+  sku_name                    = var.admin_key_vault_sku_name
+  vault_access_tenant_id      = var.tenant_id
+  soft_delete_retention_days  = var.admin_key_vault_soft_delete_retention_days
+  network_acls_ip_rules       = var.private_network_allow_ip_list
   network_acls_default_action = "Deny"
   network_acl_vnet_subnet_ids = []
   depends_on = [
@@ -410,18 +404,15 @@ module "admin-key-vault-private-endpoint" {
 
 # Create development key vault
 module "deve-key-vault" {
-  source                     = "git::https://github.com/wso2/azure-terraform-modules.git//modules/azurerm/Key-Vault?ref=v0.5.0"
-  key_vault_name             = join("-", [var.shortened_project, var.development_key_vault_application_name, var.shortened_environment, var.shortened_location, var.shortened_padding])
-  tags                       = local.default_tags
-  location                   = var.location
-  resource_group_name        = module.spoke-resource-group.resource_group_name
-  sku_name                   = var.development_key_vault_sku_name
-  vault_access_tenant_id     = var.tenant_id
-  soft_delete_retention_days = var.development_key_vault_soft_delete_retention_days
-  network_acls_ip_rules = [
-    var.wso2_us_vpn_outbound_ip,
-    var.wso2_lk_office_outbound_ip
-  ]
+  source                      = "git::https://github.com/wso2/azure-terraform-modules.git//modules/azurerm/Key-Vault?ref=v0.5.0"
+  key_vault_name              = join("-", [var.shortened_project, var.development_key_vault_application_name, var.shortened_environment, var.shortened_location, var.shortened_padding])
+  tags                        = local.default_tags
+  location                    = var.location
+  resource_group_name         = module.spoke-resource-group.resource_group_name
+  sku_name                    = var.development_key_vault_sku_name
+  vault_access_tenant_id      = var.tenant_id
+  soft_delete_retention_days  = var.development_key_vault_soft_delete_retention_days
+  network_acls_ip_rules       = var.private_network_allow_ip_list
   network_acls_default_action = "Deny"
   network_acl_vnet_subnet_ids = []
   depends_on = [
@@ -584,10 +575,7 @@ module "premium-fileshare-storage-account" {
   recovery_vault_name                                      = module.recovery-services-vault.recovery_vault_name
   storage_account_network_rules_default_action             = "Deny"
   storage_account_network_rules_bypass                     = ["AzureServices", "Metrics", "Logging"]
-  storage_account_network_rules_ip_rules                   = [
-    var.wso2_us_vpn_outbound_ip,
-    var.wso2_lk_office_outbound_ip
-  ]
+  storage_account_network_rules_ip_rules                   = var.private_network_allow_ip_list
   storage_account_network_rules_virtual_network_subnet_ids = []
   advanced_threat_protection_enabled                       = var.advanced_threat_protection_enabled
   depends_on = [

@@ -290,11 +290,8 @@ module "bastion-host" {
   virtual_network_name         = module.hub-virtual-network.virtual_network_name
   subnet_address_prefixes      = var.bastion_host_subnet_address_prefix
   allow_https_internet_inbound = var.allow_bastion_https_internet_inbound
-  public_address_prefixes = [
-    var.wso2_us_vpn_outbound_ip,
-    var.wso2_lk_office_outbound_ip
-  ]
-  tags = local.default_tags
+  public_address_prefixes      = var.private_network_allow_ip_list
+  tags                         = local.default_tags
   depends_on = [
     module.hub-resource-group,
     module.hub-virtual-network

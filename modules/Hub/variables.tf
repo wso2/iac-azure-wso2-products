@@ -76,6 +76,11 @@ variable "firewall_zones" {
   type        = list(string)
 }
 
+variable "private_network_allow_ip_list" {
+  description = "Allow IP address list for private resources"
+  type        = list(string)
+}
+
 variable "firewall_network_rule_collection_priority" {
   description = "Priority of network rule collection"
   type        = number
@@ -139,16 +144,6 @@ variable "devops_scale_set_agents_source_image_id" {
 variable "devops_scale_set_agents_subnet_service_endpoints" {
   description = "Scale set agents subnet service endpoints"
   type        = list(string)
-}
-
-variable "wso2_lk_office_outbound_ip" {
-  description = "The outbound IP address of the WSO2 LK office"
-  type        = string
-}
-
-variable "wso2_us_vpn_outbound_ip" {
-  description = "The outbound IP address of the WSO2 US VPN"
-  type        = string
 }
 
 variable "front_door_waf_object" {

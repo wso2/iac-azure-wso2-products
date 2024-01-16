@@ -47,7 +47,7 @@ module "health-monitoring-alerts" {
     "resource_health_critical_component_alert_p1" = {
       scopes = [
         module.premium-fileshare-storage-account.storage_account_id,
-       module.spoke-virtual-network.virtual_network_id,
+        module.spoke-virtual-network.virtual_network_id,
         module.deve-key-vault.vault_id
       ]
       description             = "Monitoring Resource Health alerts of level Critical"

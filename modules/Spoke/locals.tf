@@ -36,9 +36,9 @@ locals {
   private_dns_zone_name_azure_monitor_oms = "privatelink.oms.opinsights.azure.com"
   private_dns_zone_name_azure_monitor_ods = "privatelink.ods.opinsights.azure.com"
 
-  private_dns_zone_id_blob        = "/subscriptions/${var.hub_subscription_id}/resourceGroups/${local.hub_resource_group_name}/providers/Microsoft.Network/privateDnsZones/${local.private_dns_zone_name_blob}"
-  private_dns_zone_id_fileshare   = "/subscriptions/${var.hub_subscription_id}/resourceGroups/${local.hub_resource_group_name}/providers/Microsoft.Network/privateDnsZones/${local.private_dns_zone_name_fileshare}"
-  private_dns_zone_id_key_vault   = "/subscriptions/${var.hub_subscription_id}/resourceGroups/${local.hub_resource_group_name}/providers/Microsoft.Network/privateDnsZones/${local.private_dns_zone_name_key_vault}"
+  private_dns_zone_id_blob      = "/subscriptions/${var.hub_subscription_id}/resourceGroups/${local.hub_resource_group_name}/providers/Microsoft.Network/privateDnsZones/${local.private_dns_zone_name_blob}"
+  private_dns_zone_id_fileshare = "/subscriptions/${var.hub_subscription_id}/resourceGroups/${local.hub_resource_group_name}/providers/Microsoft.Network/privateDnsZones/${local.private_dns_zone_name_fileshare}"
+  private_dns_zone_id_key_vault = "/subscriptions/${var.hub_subscription_id}/resourceGroups/${local.hub_resource_group_name}/providers/Microsoft.Network/privateDnsZones/${local.private_dns_zone_name_key_vault}"
 
   role_definition_name_reader         = "Reader"
   role_definition_name_vm_admin_login = "Virtual Machine Administrator Login"

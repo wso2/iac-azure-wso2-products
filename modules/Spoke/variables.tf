@@ -348,16 +348,9 @@ variable "key_vault_tf_ad_group_access_certificate_permissions" {
   default     = []
 }
 
-# WSO2 VPN IP
-variable "wso2_us_vpn_outbound_ip" {
-  description = "Outbound IP of WSO2 US VPN"
-  type        = string
-}
-
-# WSO2 OFFICE IP
-variable "wso2_lk_office_outbound_ip" {
-  description = "Outbound IP of WSO2 US VPN"
-  type        = string
+variable "private_network_allow_ip_list" {
+  description = "Allow IP address list for private resources"
+  type        = list(string)
 }
 
 variable "private_endpoint_subnet_workload_name_fileshare" {
@@ -442,7 +435,7 @@ variable "firewall_dynamic_dnat_rules" {
 
 variable "firewall_dynamic_dnat_rules_lb_private_ip_address" {
   description = "LB private address for firewall dynamic DNAT Rules"
-  type = string
+  type        = string
 }
 
 variable "dns_zone_name" {
@@ -518,73 +511,73 @@ variable "monitoring_alerts_actions_emails_warning" {
 variable "keyvault_saturation_threshold_critical" {
   description = "Key vault saturation critical threshold"
   type        = number
-  default = 95.0
+  default     = 95.0
 }
 
 variable "keyvault_saturation_threshold_warning" {
   description = "Warning Key vault saturation warning threshold"
   type        = number
-  default = 80.0
+  default     = 80.0
 }
 
 variable "keyvault_latency_critical_threshold" {
   description = "Key vault latency critical threshold"
   type        = number
-  default = 5000
+  default     = 5000
 }
 
 variable "keyvault_latency_warning_threshold" {
   description = "Key vault latency warning threshold"
   type        = number
-  default = 3000
+  default     = 3000
 }
 
 variable "keyvault_availability_critical_threshold" {
   description = "Key vault availability critical threshold"
   type        = number
-  default = 80.0
+  default     = 80.0
 }
 
 variable "keyvault_availability_warning_threshold" {
   description = "Key vault availability warning threshold"
   type        = number
-  default = 95.0
+  default     = 95.0
 }
 
 variable "is_fileshare_used_capacity_critical_threshold" {
   description = "IS file share used capacity critical threshold"
   type        = number
-  default = 102005473280.0 #95GB
+  default     = 102005473280.0 #95GB
 }
 
 variable "is_fileshare_used_capacity_warning_threshold" {
   description = "IS file share used capacity warning threshold"
   type        = number
-  default = 85899345920.0  #80GB
+  default     = 85899345920.0 #80GB
 }
 
 variable "is_file_share_availability_critical_threshold" {
   description = "IS file share availability critical threshold"
   type        = number
-  default = 80.0
+  default     = 80.0
 }
 
 variable "is_file_share_availability_warning_threshold" {
   description = "IS file share availability warning threshold"
   type        = number
-  default = 95.0
+  default     = 95.0
 }
 
 variable "is_file_share_e2e_latency_critical_threshold" {
   description = "IS file share e2e latency critical threshold"
   type        = number
-  default = 200
+  default     = 200
 }
 
 variable "is_file_share_e2e_latency_warning_threshold" {
   description = "IS file share e2e latency warning threshold"
   type        = number
-  default = 110
+  default     = 110
 }
 
 variable "service_health_error_alert_target_locations" {
@@ -595,5 +588,5 @@ variable "service_health_error_alert_target_locations" {
 variable "service_health_error_alert_target_events" {
   description = "Target events for service health error alert"
   type        = list(string)
-  default = ["Incident"]
+  default     = ["Incident"]
 }
