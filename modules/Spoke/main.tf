@@ -227,7 +227,7 @@ module "firewall-allow-dnat-rule" {
   ]
 }
 
-# Firewall Alow Application Rule
+# Firewall Allow Application Rule
 module "firewall-allow-application-rule" {
   providers = {
     azurerm = azurerm.hub

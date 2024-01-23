@@ -70,7 +70,7 @@ module "fw-snat-port-utilization-percent-monitoring-alerts" {
     }
     "fw-health-state-monitoring-alert-critical" = {
       scopes                    = [module.firewall.firewall_id],
-      alert_name                = join("-", [var.project, "CriticalFirewallHealthStateReducedBelowLimt", var.environment, var.location, var.padding])
+      alert_name                = join("-", [var.project, "CriticalFirewallHealthStateReducedBelowLimit", var.environment, var.location, var.padding])
       description               = "[CRITICAL] Average firewall health state has reduced below it's limit which is ${var.firewall_health_state_critical_threshold}% during the last 5 minutes. You may click on the Alert ID to get more details."
       criteria_metric_namespace = "Microsoft.Network/azureFirewalls"
       criteria_metric_name      = "FirewallHealth"
@@ -85,7 +85,7 @@ module "fw-snat-port-utilization-percent-monitoring-alerts" {
     }
     "fw-health-state-monitoring-alert-warning" = {
       scopes                    = [module.firewall.firewall_id],
-      alert_name                = join("-", [var.project, "WarningFirewallHealthStateReducedBelowLimt", var.environment, var.location, var.padding])
+      alert_name                = join("-", [var.project, "WarningFirewallHealthStateReducedBelowLimit", var.environment, var.location, var.padding])
       description               = "[WARNING] Average firewall health state has reduced below it's limit which is ${var.firewall_health_state_warning_threshold}% during the last 5 minutes. You may click on the Alert ID to get more details."
       criteria_metric_namespace = "Microsoft.Network/azureFirewalls"
       criteria_metric_name      = "FirewallHealth"

@@ -137,7 +137,7 @@ variable "devops_scale_set_agents_sku" {
 }
 
 variable "devops_scale_set_agents_source_image_id" {
-  description = "The source image ID of the scale set agent image."
+  description = "The source image ID of the scale set agent image"
   type        = string
 }
 
@@ -153,7 +153,7 @@ variable "front_door_waf_object" {
 }
 
 variable "private_link_scope_workload_name" {
-  description = "private link scope workload name"
+  description = "Private link scope workload name"
   type        = string
   default     = "private-la"
 }
@@ -257,7 +257,7 @@ variable "private_endpoint_subnet_address_prefix" {
 }
 
 variable "monitoring_alerts_actions_emails_critical" {
-  description = "List of the email receives for Critical alerts"
+  description = "List of the email receivers for Critical alerts"
   type = list(object({
     name                    = string
     email_address           = string
@@ -266,7 +266,7 @@ variable "monitoring_alerts_actions_emails_critical" {
 }
 
 variable "monitoring_alerts_actions_emails_warning" {
-  description = "List of the email receives for Warning alerts"
+  description = "List of the email receivers for Warning alerts"
   type = list(object({
     name                    = string
     email_address           = string
@@ -275,25 +275,25 @@ variable "monitoring_alerts_actions_emails_warning" {
 }
 
 variable "firewall_snat_port_utilization_percent_critical_threshold" {
-  description = "Firewall SNAT port utilization percent for critical alert"
+  description = "Firewall SNAT port utilization percentage for critical alert"
   type        = string
   default     = 95
 }
 
 variable "firewall_snat_port_utilization_percent_warning_threshold" {
-  description = "Firewall SNAT port utilization percent for warning alert"
+  description = "Firewall SNAT port utilization percentage for warning alert"
   type        = string
   default     = 80
 }
 
 variable "firewall_health_state_critical_threshold" {
-  description = "Firewall health state for critical alert"
+  description = "Firewall health state threshold for critical alert"
   type        = string
   default     = 80
 }
 
 variable "firewall_health_state_warning_threshold" {
-  description = "Firewall health state percent for warning alert"
+  description = "Firewall health state threshold for warning alert"
   type        = string
   default     = 95
 }

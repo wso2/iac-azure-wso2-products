@@ -82,24 +82,6 @@ module "health-monitoring-alerts" {
       target_resource_id      = null
       target_resource_type    = null
       target_resource_group   = null
-    },
-    "resource_health_non_critical_component_alert_p3" = {
-      scopes = [
-        module.bastion.bastion_vm_id,
-      ]
-      description             = "Monitoring Resource Health alerts of level P3"
-      criteriaLevel           = "Critical"
-      criteriaCategory        = "ResourceHealth"
-      criteriaReason          = ["PlatformInitiated"]
-      currentStatuses         = ["Unavailable", "Degraded"]
-      previousStatuses        = ["Available", "Unknown"]
-      monitor_action_group_id = module.monitoring-alerts-action-group-warning.monitor_action_group_id
-      reason                  = "[p3]resourcehealthcriticalnoncomponents"
-      status                  = "Active"
-      query_enabled           = true
-      target_resource_id      = null
-      target_resource_type    = null
-      target_resource_group   = null
     }
   }
 

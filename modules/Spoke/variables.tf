@@ -258,19 +258,19 @@ variable "key_vault_cluster_product_ad_application_name" {
 }
 
 variable "key_vault_cluster_product_ad_sp_access_key_permissions" {
-  description = "Azure Active Directory cluster product application name for Dev Key vault"
+  description = "Key vault access policy key permission for AD application cluster product"
   type        = list(string)
   default     = []
 }
 
 variable "key_vault_cluster_product_ad_sp_access_secret_permissions" {
-  description = "Azure Active Directory cluster product application name for Dev Key vault"
+  description = "Key vault access policy secret permission for AD application cluster product"
   type        = list(string)
   default     = ["Get", "List"]
 }
 
 variable "key_vault_cluster_product_ad_sp_access_certificate_permissions" {
-  description = "Azure Active Directory cluster product application name for Dev Key vault"
+  description = "Key vault access policy certificate permission for AD application cluster product"
   type        = list(string)
   default     = []
 }
@@ -331,19 +331,19 @@ variable "advanced_threat_protection_enabled" {
 }
 
 variable "key_vault_tf_ad_group_access_key_permissions" {
-  description = "Key vault terraform ad group access key permissions"
+  description = "Key vault terraform AD group access key permissions"
   type        = list(string)
   default     = []
 }
 
 variable "key_vault_tf_ad_group_access_secret_permissions" {
-  description = "Key vault terraform ad group access secret permissions"
+  description = "Key vault terraform AD group access secret permissions"
   type        = list(string)
   default     = ["Get", "List", "Set", "Delete"]
 }
 
 variable "key_vault_tf_ad_group_access_certificate_permissions" {
-  description = "Key vault terraform ad group access certificate permissions"
+  description = "Key vault terraform AD group access certificate permissions"
   type        = list(string)
   default     = []
 }
@@ -373,7 +373,7 @@ variable "is_fileshare_quote" {
 }
 
 variable "firewall_network_rule_collection_name_allow" {
-  description = "Firewall Network Rule Collection Name Workload Name"
+  description = "Firewall Network Rule Collection workload name"
   type        = string
   default     = "allow"
 }
@@ -385,7 +385,7 @@ variable "firewall_network_rule_collection_priority_allow" {
 }
 
 variable "firewall_application_rule_collection_name_allow" {
-  description = "Firewall Application Rule Collection Name Workload Name"
+  description = "Firewall Application Rule Collection workload name"
   type        = string
   default     = "allow"
 }
@@ -409,7 +409,7 @@ variable "firewall_nat_rule_collection_priority" {
 }
 
 variable "firewall_nat_rule_collection_name_allow" {
-  description = "Firewall NAT Rule Collection Name Workload Name"
+  description = "Firewall NAT Rule Collection workload name"
   type        = string
   default     = "allow"
 }
@@ -491,7 +491,7 @@ variable "alert_percentage_threshold_critical" {
 }
 
 variable "monitoring_alerts_actions_emails_critical" {
-  description = "List of the email receives for Critical alerts"
+  description = "List of the email receivers for Critical alerts"
   type = list(object({
     name                    = string
     email_address           = string
@@ -500,7 +500,7 @@ variable "monitoring_alerts_actions_emails_critical" {
 }
 
 variable "monitoring_alerts_actions_emails_warning" {
-  description = "List of the email receives for Warning alerts"
+  description = "List of the email receivers for Warning alerts"
   type = list(object({
     name                    = string
     email_address           = string
