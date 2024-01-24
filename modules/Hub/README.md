@@ -93,7 +93,7 @@ No resources.
 | <a name="input_private_endpoint_subnet_workload_name"></a> [private\_endpoint\_subnet\_workload\_name](#input\_private\_endpoint\_subnet\_workload\_name) | Private endpoint subnet workload name | `string` | `"private-endpoint"` | no |
 | <a name="input_private_endpoint_subnet_workload_name_ampls"></a> [private\_endpoint\_subnet\_workload\_name\_ampls](#input\_private\_endpoint\_subnet\_workload\_name\_ampls) | AMPLS private endpoint subnet workload name | `string` | `"ampls"` | no |
 | <a name="input_private_link_scope_workload_name"></a> [private\_link\_scope\_workload\_name](#input\_private\_link\_scope\_workload\_name) | private link scope workload name | `string` | `"private-la"` | no |
-| <a name="input_private_network_allow_ip_list"></a> [private\_network\_allow\_ip\_list](#input\_private\_network\_allow\_ip\_list) | Allow IP address list for private resources | `list(string)` | n/a | yes |
+| <a name="input_public_address_prefixes"></a> [public\_address\_prefixes](#input\_public\_address\_prefixes) | Allow IP address list for private resources | `list(string)` | n/a | yes |
 | <a name="input_project"></a> [project](#input\_project) | The name of the project | `string` | n/a | yes |
 | <a name="input_public_ip_prefix_length"></a> [public\_ip\_prefix\_length](#input\_public\_ip\_prefix\_length) | Public IP Prefix Length | `number` | `30` | no |
 | <a name="input_role_definition_name_reader"></a> [role\_definition\_name\_reader](#input\_role\_definition\_name\_reader) | Role definition name reader | `string` | `"Reader"` | no |
