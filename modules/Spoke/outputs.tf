@@ -25,3 +25,15 @@ output "bastion_jump_box_resource_id" {
   description = "Bastion jump box VM resource ID"
   depends_on  = [module.bastion]
 }
+
+output "spoke_resource_group_name" {
+  value = module.spoke-resource-group.resource_group_name
+  description = "The name of the Spoke resource group"
+  depends_on = [module.spoke-resource-group]
+}
+
+output "spoke_virtual_network_name" {
+  value = module.spoke-virtual-network.virtual_network_name
+  description = "The name of the Spoke virtual network"
+  depends_on = [module.spoke-virtual-network]
+}
