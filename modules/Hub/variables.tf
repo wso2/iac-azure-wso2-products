@@ -76,8 +76,8 @@ variable "firewall_zones" {
   type        = list(string)
 }
 
-variable "private_network_allow_ip_list" {
-  description = "Allow IP address list for private resources"
+variable "public_address_prefixes" {
+  description = "Public address spaces allowed for the Bastion host subnet"
   type        = list(string)
 }
 
