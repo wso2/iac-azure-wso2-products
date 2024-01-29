@@ -9,9 +9,21 @@
 #
 # --------------------------------------------------------------------------------------
 
+output "hub_resource_group_name" {
+  value       = module.hub-resource-group.resource_group_name
+  description = "The name of the Hub resource group"
+  depends_on  = [module.hub-resource-group]
+}
+
 output "vnet_resource_id" {
   value       = module.hub-virtual-network.virtual_network_id
   description = "Virtual network resource ID"
+  depends_on  = [module.hub-virtual-network]
+}
+
+output "hub_virtual_network_name" {
+  value       = module.hub-virtual-network.virtual_network_name
+  description = "The name of the Virtual Network"
   depends_on  = [module.hub-virtual-network]
 }
 
