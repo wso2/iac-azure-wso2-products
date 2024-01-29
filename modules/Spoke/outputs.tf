@@ -37,3 +37,9 @@ output "spoke_virtual_network_name" {
   description = "The name of the Spoke virtual network"
   depends_on = [module.spoke-virtual-network]
 }
+
+output "spoke_private_endpoint_subnet_id" {
+  value = module.private-endpoint-subnet.private_endpoint_subnet_id
+  description = "The private endpoint subnet ID"
+  depends_on = [module.private-endpoint-subnet]
+}
