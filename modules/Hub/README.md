@@ -79,7 +79,10 @@ No resources.
 | <a name="input_firewall_snat_port_utilization_percent_warning_threshold"></a> [firewall\_snat\_port\_utilization\_percent\_warning\_threshold](#input\_firewall\_snat\_port\_utilization\_percent\_warning\_threshold) | Firewall SNAT port utilization percent for warning alert | `string` | `80` | no |
 | <a name="input_firewall_subnet_address_prefix"></a> [firewall\_subnet\_address\_prefix](#input\_firewall\_subnet\_address\_prefix) | Firewall subnet address prefix | `string` | n/a | yes |
 | <a name="input_firewall_zones"></a> [firewall\_zones](#input\_firewall\_zones) | The firewall zones | `list(string)` | n/a | yes |
-| <a name="input_front_door_waf_object"></a> [front\_door\_waf\_object](#input\_front\_door\_waf\_object) | WAF policy configuration | `map(any)` | `{}` | no |
+| <a name="input_waf_workload"></a> [waf\_workload](#input\_waf\_workload) | WAF workload application name | `string` | n/a | yes |
+| <a name="input_waf_mode"></a> [waf\_mode](#input\_waf\_mode) | WAF mode | `string` | `"Prevention"` | no |
+| <a name="input_waf_redirect_url"></a> [waf\_redirect\_uri](#input\_waf\_redirect\_uri) | WAF redirect url | `string` | n/a | no |
+| <a name="input_waf_custom_block_response_body_path"></a> [waf\_custom\_block\_response\_body\_path](#input\_waf\_custom\_block\_response\_body\_path) | WAF Custom Block Response Body Path | `string` | n/a | no |
 | <a name="input_hub_name"></a> [hub\_name](#input\_hub\_name) | The name of the hub | `string` | `"hub"` | no |
 | <a name="input_location"></a> [location](#input\_location) | The Azure region to deploy | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_internet_ingestion_enabled"></a> [log\_analytics\_workspace\_internet\_ingestion\_enabled](#input\_log\_analytics\_workspace\_internet\_ingestion\_enabled) | Should the Log Analytics Workspace support ingestion over the Public Internet? | `bool` | `false` | no |

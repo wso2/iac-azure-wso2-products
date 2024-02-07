@@ -309,3 +309,25 @@ variable "alert_severity_warning" {
   type        = number
   default     = 2
 }
+
+# WAF
+variable "waf_workload" {
+  description = "WAF workload"
+  type        = string
+}
+
+variable "waf_mode" {
+  description = "WAF mode"
+  type        = string
+  default     = "Prevention"
+}
+
+variable "waf_redirect_url" {
+  description = "WAF redirect url"
+  type        = string
+}
+
+variable "waf_custom_block_response_body_path" {
+  description = "WAF Custom Block Response Body Path"
+  type        = string
+}
