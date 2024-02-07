@@ -27,25 +27,25 @@ output "bastion_jump_box_resource_id" {
 }
 
 output "spoke_resource_group_name" {
-  value = module.spoke-resource-group.resource_group_name
+  value       = module.spoke-resource-group.resource_group_name
   description = "The name of the Spoke resource group"
-  depends_on = [module.spoke-resource-group]
+  depends_on  = [module.spoke-resource-group]
 }
 
 output "spoke_resource_group_id" {
-  value = module.spoke-resource-group.id
+  value       = module.spoke-resource-group.id
   description = "The ID of the Resource Group."
-  depends_on = [module.spoke-resource-group]
+  depends_on  = [module.spoke-resource-group]
 }
 
 output "spoke_virtual_network_name" {
-  value = module.spoke-virtual-network.virtual_network_name
+  value       = module.spoke-virtual-network.virtual_network_name
   description = "The name of the Spoke virtual network"
-  depends_on = [module.spoke-virtual-network]
+  depends_on  = [module.spoke-virtual-network]
 }
 
 output "spoke_private_endpoint_subnet_id" {
-  value = module.private-endpoint-subnet.private_endpoint_subnet_id
+  value       = module.private-endpoint-subnet.private_endpoint_subnet_id
   description = "The private endpoint subnet ID"
-  depends_on = [module.private-endpoint-subnet]
+  depends_on  = [module.private-endpoint-subnet]
 }
