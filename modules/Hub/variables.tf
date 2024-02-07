@@ -146,12 +146,6 @@ variable "devops_scale_set_agents_subnet_service_endpoints" {
   type        = list(string)
 }
 
-variable "front_door_waf_object" {
-  type        = map(any)
-  description = "WAF policy configuration"
-  default     = {}
-}
-
 variable "private_link_scope_workload_name" {
   description = "Private link scope workload name"
   type        = string
