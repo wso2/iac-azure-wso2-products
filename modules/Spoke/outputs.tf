@@ -32,6 +32,12 @@ output "spoke_resource_group_name" {
   depends_on = [module.spoke-resource-group]
 }
 
+output "spoke_resource_group_id" {
+  value = module.spoke-resource-group.id
+  description = "The ID of the Resource Group."
+  depends_on = [module.spoke-resource-group]
+}
+
 output "spoke_virtual_network_name" {
   value = module.spoke-virtual-network.virtual_network_name
   description = "The name of the Spoke virtual network"
