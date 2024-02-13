@@ -33,7 +33,7 @@ output "spoke_resource_group_name" {
 }
 
 output "spoke_resource_group_id" {
-  value       = module.spoke-resource-group.id
+  value       = module.spoke-resource-group.resource_group_id
   description = "The ID of the Resource Group."
   depends_on  = [module.spoke-resource-group]
 }
