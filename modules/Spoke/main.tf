@@ -320,7 +320,9 @@ module "bastion" {
     module.private-endpoint-subnet,
     module.firewall-allow-application-rule,
     module.firewall-allow-dnat-rule,
-    module.firewall-allow-network-rule
+    module.firewall-allow-network-rule,
+    module.hub-to-spoke-vnet-peering,
+    module.spoke-to-hub-vnet-peering
   ]
 }
 
